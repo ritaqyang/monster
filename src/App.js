@@ -6,6 +6,20 @@ class App extends Component {
     super();
     this.state={
       name:{first:"rita",last:"yang"},
+      monsters:[
+        {
+          name:"James"
+        },
+        {
+          name:"Lara"
+        },
+        {
+          name:"Zehra"
+        },
+        {
+          name:"Rachel"
+        }
+      ]
     }
   
   }
@@ -18,8 +32,10 @@ class App extends Component {
         this.setState({name:{first:"brian",last:"kehoe"}});
 
         console.log(this.state);
-      }}
-       >change name</button>
+      }}>change name</button>
+      {this.state.monsters.map((monster)=>{
+        return <h1>{monster.name}</h1>;
+      })}
       </>
     )
 
