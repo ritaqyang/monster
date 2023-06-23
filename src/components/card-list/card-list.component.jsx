@@ -1,6 +1,5 @@
 import { Component } from 'react';
-
-
+import './card-list.styles.css';
 class CardList extends Component {
 
     render() {
@@ -16,6 +15,9 @@ class CardList extends Component {
                         src={`https://robohash.org/${id}?set=set2&size=180x180`}
                     
                     />
+                    <h2>{name}</h2>
+                    <p>{email}</p>
+
                 </div>
                 )
 
