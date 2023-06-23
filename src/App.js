@@ -6,7 +6,8 @@ class App extends Component {
     super();
     this.state={
       name:{first:"rita",last:"yang"},
-      monsters:[]
+      monsters:[],
+      searchField:''
     }
   }
 
@@ -28,18 +29,29 @@ class App extends Component {
   }
   render(){
 
-    return (
-      <>
-      <h1>hello {this.state.name.first}</h1>
-      <button onClick={()=>{
-        this.setState({name:{first:"brian",last:"kehoe"}});
+    
 
-        console.log(this.state);
-      }}>change name</button>
-      {this.state.monsters.map((monster)=>{
+    const filteredMonsters = this.state.monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(this.state.searchField);
+    });
+
+    return (
+      <div className='App'>
+      <input 
+        className='search-box'
+        type='search'
+        placeholder='search monsters'
+        onChange={(event) => {
+          const searchField = event.target.value.toLocaleLowerCase(); //get the user input  
+          this.setState(() => {
+            return { searchField }; //setState shorthand 
+          })
+        }}
+      />
+      {filteredMonsters.map((monster)=>{
         return <h1>{monster.name}</h1>;
       })}
-      </>
+      </div>
     )
 
   }
